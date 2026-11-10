@@ -24,13 +24,8 @@ body::after{content:"";position:fixed;inset:0;background:radial-gradient(ellipse
 
 
 /* Floating, feather-edged basketball photos behind the page */
-.float-photos{
-  position:fixed;
-  inset:0;
-  z-index:0;
-  overflow:hidden;
-  pointer-events:none;
-}
+
+/* Floating, feather-edged basketball photos — confined to the hero */
 .float-photos{
   position:absolute;
   inset:0;
@@ -38,6 +33,23 @@ body::after{content:"";position:fixed;inset:0;background:radial-gradient(ellipse
   overflow:hidden;
   pointer-events:none;
 }
+
+.float-photo{
+  position:absolute;
+  left:0;
+  top:var(--top);
+  width:clamp(105px,13vw,175px);
+  aspect-ratio:1;
+  border-radius:50%;
+  overflow:hidden;
+  opacity:var(--opacity,.22);
+  filter:blur(1.5px);
+  -webkit-mask-image:radial-gradient(circle, #000 42%, rgba(0,0,0,.85) 54%, transparent 73%);
+  mask-image:radial-gradient(circle, #000 42%, rgba(0,0,0,.85) 54%, transparent 73%);
+  animation:photo-drift var(--duration,38s) linear var(--delay,0s) infinite;
+  will-change:transform;
+}
+
 .float-photo img{
   width:100%;
   height:100%;
@@ -45,18 +57,31 @@ body::after{content:"";position:fixed;inset:0;background:radial-gradient(ellipse
   display:block;
   filter:grayscale(1) contrast(1.08);
 }
+
 @keyframes photo-drift{
   from{transform:translate3d(110vw,0,0)}
   to{transform:translate3d(-220px,0,0)}
 }
-.wrap{position:relative;z-index:1}
-.hero{position:relative;overflow:hidden}
+
+.hero{
+  position:relative;
+  overflow:hidden;
+}
+
 @media(max-width:700px){
-  .float-photo{width:clamp(90px,25vw,125px);opacity:.16}
+  .float-photo{
+    width:clamp(90px,25vw,125px);
+    opacity:.16;
+  }
 }
+
 @media(prefers-reduced-motion:reduce){
-  .float-photo{animation:none;display:none}
+  .float-photo{
+    animation:none;
+    display:none;
+  }
 }
+
 
 /* Subtle green ball that travels across the page as the visitor scrolls */
 .scroll-ball{
@@ -166,13 +191,7 @@ footer a{color:var(--g)}
 </style>
 </head>
 <body>
-<div class="float-photos" aria-hidden="true">
-  <div class="float-photo" style="--top:12%;--duration:42s;--delay:-8s;--opacity:.22"><img src="3x3 Hungary (Nathan Green)-107 2.JPG" alt=""></div>
-  <div class="float-photo" style="--top:34%;--duration:35s;--delay:-24s;--opacity:.18"><img src="Full Edit - U23 3x3 (Nathan Green)-103.jpg" alt=""></div>
-  <div class="float-photo" style="--top:57%;--duration:46s;--delay:-16s;--opacity:.23"><img src="hfmrtoyv0ftlnbs55pp0.jpeg" alt=""></div>
-  <div class="float-photo" style="--top:76%;--duration:39s;--delay:-31s;--opacity:.17"><img src="zd43kmmwzcdxtjapdnwa.jpeg" alt=""></div>
-  <div class="float-photo" style="--top:91%;--duration:49s;--delay:-5s;--opacity:.20"><img src="IMG_0838.JPG" alt=""></div>
-</div>
+
 <div class="wrap">
 <nav><div class="logo mono">VERON<span>.</span>EZE / FILM ROOM</div><a class="btn" href="#book">Book a session</a></nav>
 

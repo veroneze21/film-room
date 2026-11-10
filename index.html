@@ -28,12 +28,15 @@ body::after{content:"";position:fixed;inset:0;background:radial-gradient(ellipse
 /* Floating, feather-edged basketball photos — confined to the hero */
 .float-photos{
   position:absolute;
-  inset:0;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:100vw;
+  transform:translateX(-50%);
   z-index:0;
   overflow:hidden;
   pointer-events:none;
 }
-
 .float-photo{
   position:absolute;
   left:0;
@@ -189,6 +192,33 @@ footer a{color:var(--g)}
   .about-layout{grid-template-columns:1fr;gap:22px}
   .about-photo{height:300px;max-width:300px}
 }
+
+  
+/* Mobile typography adjustments only */
+@media(max-width:700px){
+
+  /* Main opening section */
+  .herogrid h1{
+    font-size:clamp(3.5rem,12vw,4.4rem);
+    line-height:.88;
+  }
+
+  .herogrid .lead{
+    font-size:1rem;
+  }
+
+  /* About section */
+  .about-copy h2{
+    font-size:2.6rem;
+    line-height:.92;
+  }
+
+  .about-copy p{
+    font-size:.95rem;
+  }
+
+}
+
 </style>
 </head>
 <body>

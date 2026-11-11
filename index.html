@@ -233,9 +233,14 @@ footer a{color:var(--g)}
 .price-card li{position:relative;padding-left:20px;color:var(--mut);font-size:.92rem}
 .price-card li::before{content:"+";position:absolute;left:0;color:var(--g);font-weight:700}
 .price-card .outcome{border-top:1px solid var(--line);padding-top:14px;margin-top:auto;color:var(--fg);font-size:.9rem}
-.price-card .outcome b{display:block;color:var(--g);font-family:'Barlow Condensed','Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.price-card .outcome b,
 .fullcourt .outcome b{
+  display:block;
   color:var(--g);
+  font-family:'Barlow Condensed','Arial Narrow',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  margin-bottom:3px;
 }
 .price-card .btn{margin-top:18px;text-align:center}
 .fullcourt{margin-top:18px;display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;background:linear-gradient(135deg,#101510,#0b0b0b 55%);border:1px solid var(--g);border-radius:8px;padding:clamp(22px,4vw,36px);box-shadow:0 0 42px rgba(57,255,106,.08)}
@@ -248,7 +253,12 @@ footer a{color:var(--g)}
 .fullcourt-part b{display:block;color:var(--g);font-family:'Barlow Condensed','Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.05em;font-size:1.05rem}
 .fullcourt-part span{color:var(--mut);font-size:.92rem}
 .travel-note{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(57,255,106,.45);border-radius:4px;padding:7px 10px;color:var(--fg);font-size:.85rem;margin-top:14px}
-.pricing-footnote{color:var(--mut);font-size:.82rem;margin-top:18px}
+.pricing-footnote{
+  color:var(--mut);
+  font-size:.82rem;
+  margin-top:18px;
+  text-align:center;
+}
 @media(max-width:850px){.pricing-grid{grid-template-columns:1fr 1fr}.price-card:last-child{grid-column:1/-1}.fullcourt{grid-template-columns:1fr}}
 @media(max-width:560px){.pricing-grid{grid-template-columns:1fr}.price-card:last-child{grid-column:auto}.price-card .duration{min-height:0}}
 /* Booking section */

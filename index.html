@@ -287,6 +287,72 @@ footer a{color:var(--g)}
   padding:20px 42px;
   min-width:240px;
 }
+  /* ===== Mobile-only improvements (desktop untouched) ===== */
+.lead-short{display:none}
+.btn.mobile-cta{display:none}
+
+@media(max-width:700px){
+  /* Hero: short hook instead of long paragraph */
+  .lead-long{display:none}
+  .lead-short{display:block}
+  .hero{padding:28px 0 40px}
+  .cta{flex-direction:column;gap:10px;margin-top:24px}
+  .cta .btn{text-align:center;padding:15px 20px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:30px;padding-top:18px}
+  .stats b{font-size:1.1rem}
+  .stats span{display:block;font-size:.68rem;line-height:1.25}
+
+  /* Nav */
+  nav{padding:14px 0}
+  .logo{font-size:.8rem}
+  nav .btn{padding:9px 14px;font-size:.9rem}
+
+  /* Tighter rhythm */
+  section{padding:44px 0}
+  h2{margin:8px 0 22px}
+  #book{margin-top:0;padding:28px 22px}
+  #book .btn{display:block;min-width:0;width:100%;padding:18px 20px}
+  footer{padding-bottom:90px}
+
+  /* About: photo first, wider crop */
+  .about-photo{order:-1;max-width:none;height:250px}
+  .about-photo img{object-position:70% 20%}
+
+  /* How it works: vertical timeline instead of 3 boxes */
+  #how .grid{display:block;margin-left:4px;padding-left:24px;border-left:1px solid var(--line)}
+  #how .card{position:relative;background:none;border:0;padding:0 0 26px}
+  #how .card:last-child{padding-bottom:0}
+  #how .card:hover{transform:none}
+  #how .card::before{content:"";position:absolute;left:-29px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--g);box-shadow:0 0 12px var(--g)}
+
+  /* Pricing + evidence: swipeable rows that bleed to the screen edge */
+  .pricing-grid,#evidence .grid{
+    display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+    margin:0 -22px;padding:4px 22px 14px;scroll-padding:0 22px;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .pricing-grid::-webkit-scrollbar,#evidence .grid::-webkit-scrollbar{display:none}
+  .pricing-grid>*,#evidence .grid>*{flex:0 0 82%;scroll-snap-align:start}
+  .price-card .duration{min-height:0}
+  .pricing-intro::after{content:" Swipe to compare →";color:var(--g)}
+  .fullcourt{padding:22px;gap:20px}
+
+  /* Scroll progress bar */
+  html::before{content:"";position:fixed;top:0;left:0;width:100%;height:3px;background:var(--g);
+    transform:scaleX(0);transform-origin:0 50%;z-index:50;
+    animation:prog linear both;animation-timeline:scroll(root block)}
+  @keyframes prog{to{transform:scaleX(1)}}
+
+  /* Fade-up on scroll (class added by JS, mobile only) */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .rv.in{opacity:1;transform:none}
+
+  /* Sticky booking button */
+  .btn.mobile-cta{display:block;position:fixed;left:12px;right:12px;
+    bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:60;text-align:center;
+    box-shadow:0 8px 30px rgba(0,0,0,.6);transform:translateY(160%);
+    pointer-events:none;transition:transform .35s ease}
+  .btn.mobile-cta.show{transform:none;pointer-events:auto}
+}
 </style>
 </head>
 <body>
@@ -304,7 +370,8 @@ footer a{color:var(--g)}
   <div class="herogrid">
     <div class="tag mono">// Live game-film sessions for basketball players</div>
     <h1>See the game <em>like a pro</em></h1>
-    <p class="lead">The key to becoming the player you want to be is hidden in the game tape that isn’t watched. In a live, one-to-one Zoom session, I will offer a professional's persepctive and analysis on your gameplay , identify your strengths, uncover areas for improvement and build you a clear plan to take your game forward. It's more than scoring more points a game. It's building the IQ and decision making to excell your career beyond the level you play now. I’m Veron Eze, and from representing Great Britain to playing professionally, I had the privillage of exceptional mentorship from top level coaches and players. Now having built a proffessional career from the guidance i was given I’m bringing that experience to help you understand your game and become a better player.</p>
+    <p class="lead lead-long">The key to becoming the player you want to be is hidden in the game tape that isn’t watched. In a live, one-to-one Zoom session, I will offer a professional's persepctive and analysis on your gameplay , identify your strengths, uncover areas for improvement and build you a clear plan to take your game forward. It's more than scoring more points a game. It's building the IQ and decision making to excell your career beyond the level you play now. I’m Veron Eze, and from representing Great Britain to playing professionally, I had the privillage of exceptional mentorship from top level coaches and players. Now having built a proffessional career from the guidance i was given I’m bringing that experience to help you understand your game and become a better player.</p>
+   <p class="lead lead-short">The key to becoming the player you want to be is hidden in the game tape that isn’t watched. In a live, one-to-one Zoom session, I will offer a professional's persepctive and analysis on your gameplay , identify your strengths, uncover areas for improvement and build you a clear plan to take your game forward. It's more than scoring more points a game. It's building the IQ and decision making to excell your career beyond the level you play now.</p>
     <div class="cta">
       <a class="btn" href="#book">Book a live session</a>
       <a class="btn ghost" href="#evidence">Why film works</a>
@@ -479,5 +546,22 @@ footer a{color:var(--g)}
 </section>
 
 <footer class="mono">© 2026 Veron Eze · <a href="https://www.instagram.com/Vc.ezey">Instagram @Vc.ezey</a> · <a href="https://veroneze.co.uk">veroneze.co.uk</a></footer>
+<a class="btn mobile-cta" href="#book">Book a live session</a>
+
+<script>
+(function(){
+  if(!window.matchMedia('(max-width:700px)').matches||!('IntersectionObserver' in window))return;
+  var cta=document.querySelector('.mobile-cta'),hero=document.querySelector('.hero'),book=document.getElementById('book');
+  var heroSeen=true,bookSeen=false;
+  function upd(){cta.classList.toggle('show',!heroSeen&&!bookSeen)}
+  new IntersectionObserver(function(e){heroSeen=e[0].isIntersecting;upd()}).observe(hero);
+  new IntersectionObserver(function(e){bookSeen=e[0].isIntersecting;upd()}).observe(book);
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(x){
+    if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.15});
+  document.querySelectorAll('section>.tag,section>h2,.about-layout>*,.two>*,.vid,.fullcourt,#how .card')
+    .forEach(function(el){el.classList.add('rv');io.observe(el)});
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Live basketball game-film sessions with Veron Eze. We watch your game back together on Zoom and leave you with a plan to improve.">
+<meta name="theme-color" content="#050505">
+<meta property="og:title" content="Veron Eze | Film Room">
+<meta property="og:description" content="Watch your game back with a professional player, live on Zoom, and leave with a plan to improve.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://veroneze.co.uk/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%80%3C/text%3E%3C/svg%3E">
+<title>Veron Eze | Film Room – Basketball Video Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:ital,wght@0,600;0,700;1,800&display=swap">
+<style>
+/* Film Room by Veron Eze - styles */
+:root{--bg:#050505;--panel:#0f0f0f;--line:#232323;--fg:#f5f5f5;--mut:#9a9a9a;--g:#39ff6a;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Barlow',system-ui,sans-serif;line-height:1.55;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;background-attachment:fixed}
+body::after{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(5,5,5,.2),var(--bg) 75%);pointer-events:none;z-index:-1}
+
+
+/* Floating, feather-edged basketball photos behind the page */
+
+/* Floating, feather-edged basketball photos — confined to the hero */
+.float-photos{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:100vw;
+  transform:translateX(-50%);
+  z-index:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+.float-photo{
+  position:absolute;
+  left:0;
+  top:var(--top);
+  width:clamp(105px,13vw,175px);
+  aspect-ratio:1;
+  border-radius:50%;
+  overflow:hidden;
+  opacity:var(--opacity,.22);
+  filter:blur(1.5px);
+  -webkit-mask-image:radial-gradient(circle, #000 42%, rgba(0,0,0,.85) 54%, transparent 73%);
+  mask-image:radial-gradient(circle, #000 42%, rgba(0,0,0,.85) 54%, transparent 73%);
+  animation:photo-drift var(--duration,38s) linear var(--delay,0s) infinite;
+  will-change:transform;
+}
+
+.float-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:grayscale(1) contrast(1.08);
+}
+
+@keyframes photo-drift{
+  from{transform:translate3d(calc(100vw + 200px),0,0)}
+  to{transform:translate3d(-350px,0,0)}
+}
+
+.hero{
+  position:relative;
+  overflow:visible;
+  isolation:isolate;
+}
+
+@media(max-width:700px){
+  .float-photo{
+    width:clamp(90px,25vw,125px);
+    opacity:.16;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .float-photo{
+    animation:none;
+    display:none;
+  }
+}
+
+
+/* Subtle green ball that travels across the page as the visitor scrolls */
+.scroll-ball{
+  position:fixed;
+  z-index:0;
+  pointer-events:none;
+  width:clamp(150px,24vw,320px);
+  aspect-ratio:1;
+  left:0;
+  top:50%;
+  border-radius:50%;
+  opacity:.22;
+  filter:blur(28px);
+  background:radial-gradient(circle at 35% 32%,rgba(120,170,116,.9),rgba(57,110,65,.72) 42%,rgba(35,78,44,.42) 68%,transparent 74%);
+  transform:translate3d(-45vw,-50%,0);
+  will-change:transform;
+  animation:ball-travel linear both;
+  animation-timeline:scroll(root block);
+}
+@keyframes ball-travel{
+  from{transform:translate3d(-45vw,-50%,0)}
+  to{transform:translate3d(110vw,-50%,0)}
+}
+.wrap{position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){
+  .scroll-ball{animation:none;transform:translate3d(35vw,-50%,0);opacity:.12}
+}
+.mono{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+h1,h2,h3{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-style:italic;font-weight:800;text-transform:uppercase}
+.vid{aspect-ratio:16/9;background:var(--panel);border:1px solid var(--g);border-radius:8px;display:grid;place-items:center;text-align:center;box-shadow:0 0 50px rgba(57,255,106,.1);position:relative;overflow:hidden}
+.play{width:84px;height:84px;border-radius:50%;background:var(--g);display:grid;place-items:center;margin:0 auto 14px}
+.play::after{content:"";border-left:24px solid #000;border-top:15px solid transparent;border-bottom:15px solid transparent;margin-left:6px}
+.chap{display:grid;gap:8px;margin-top:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.chap div{border:1px dashed var(--line);border-radius:6px;padding:10px 14px;color:var(--mut);font-size:.9rem}
+.chap b{color:var(--g)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-weight:700;letter-spacing:-.02em}
+.logo span{color:var(--g)}
+.btn{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-style:italic;text-transform:uppercase;letter-spacing:.05em;font-size:1.1rem;display:inline-block;background:var(--g);color:#000;font-weight:700;padding:14px 26px;border-radius:4px;text-decoration:none;transition:.2s}
+.btn:hover{box-shadow:0 0 28px rgba(57,255,106,.55);transform:translateY(-2px)}
+.btn.ghost{background:none;color:var(--fg);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--g);box-shadow:none}
+.hero{padding:70px 0 80px}
+.tag{color:var(--g);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+h1{font-size:clamp(3rem,10vw,6.8rem);line-height:.9;letter-spacing:-.01em;margin:18px 0 22px;max-width:12ch}
+h1 em{font-style:normal;color:var(--g)}
+.lead{color:var(--mut);max-width:56ch;font-size:1.1rem}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.stats{display:flex;gap:34px;flex-wrap:wrap;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+.stats b{display:block;font-size:1.6rem;color:var(--g)}
+.stats span{color:var(--mut);font-size:.8rem}
+section{padding:70px 0}
+h2{font-size:clamp(2.2rem,6vw,3.8rem);letter-spacing:-.005em;margin:10px 0 36px;line-height:.95}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px;transition:.25s}
+.card:hover{border-color:var(--g);transform:translateY(-3px)}
+.card .n{color:var(--g);font-size:.8rem}
+.card h3{margin:8px 0;font-size:1.6rem;line-height:1}
+.card p{margin:0;color:var(--mut);font-size:.95rem}
+.big{font-size:2.6rem;font-weight:700;color:var(--g);letter-spacing:-.04em;line-height:1}
+.src{font-size:.72rem;color:#6d6d6d;margin-top:14px!important}
+.report{background:var(--panel);border:1px solid var(--g);border-radius:8px;padding:26px;box-shadow:0 0 40px rgba(57,255,106,.08)}
+.row{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px dashed var(--line);font-size:.92rem}
+.row:last-child{border:0}
+.row b{color:var(--g);font-weight:400}
+.two{display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:center}
+.note{color:var(--mut);font-size:.8rem;max-width:70ch}
+.hero{position:relative}
+.herogrid{position:relative;z-index:1;text-align:center}
+.herogrid h1,.herogrid .lead{margin-left:auto;margin-right:auto}
+.herogrid .cta,.herogrid .stats{justify-content:center}
+.ph{border:1px dashed var(--g);border-radius:8px;background:repeating-linear-gradient(135deg,#0c0c0c,#0c0c0c 14px,#111 14px,#111 28px);display:grid;place-items:center;text-align:center;padding:16px;color:var(--mut);font-size:.95rem}
+.ph.tall{aspect-ratio:4/5}
+.ph.vert{aspect-ratio:9/16}
+.reel{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mut);font-size:.85rem}
+footer a{color:var(--g)}
+/* ---- Image / video helpers (used when you replace the placeholders) ---- */
+.bgp img{width:100%;height:100%;object-fit:cover;opacity:.35;filter:grayscale(1) contrast(1.1)}
+.ph img,.vid video,.vid iframe{width:100%;height:100%;object-fit:cover;border:0;border-radius:8px;display:block}
+.vid iframe{position:absolute;inset:0}
+.card .ph{padding:0;overflow:hidden}
+
+
+.about-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center}
+.about-copy p{color:var(--mut);font-size:1.02rem;max-width:62ch}
+.about-photo{
+  width:100%;
+  max-width:340px;
+  height:380px;
+  justify-self:center;
+  overflow:hidden;
+  border-radius:8px;
+}
+.about-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:70% center;
+  display:block;
+}
+@media(max-width:700px){
+  .about-layout{grid-template-columns:1fr;gap:22px}
+  .about-photo{height:300px;max-width:300px}
+}
+
+  
+/* Mobile typography adjustments only */
+@media(max-width:700px){
+
+  /* Main opening section */
+  .herogrid h1{
+    font-size:clamp(3.5rem,12vw,4.4rem);
+    line-height:.88;
+  }
+
+  .herogrid .lead{
+    font-size:1rem;
+  }
+
+  /* About section */
+  .about-copy h2{
+    font-size:2.6rem;
+    line-height:.92;
+  }
+
+  .about-copy p{
+    font-size:.95rem;
+  }
+
+}
+
+
+/* ---- Pricing and player development packages ---- */
+.pricing-intro{max-width:62ch;color:var(--mut);margin:-18px 0 28px}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.price-card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px;min-width:0}
+.price-card.featured{border-color:var(--g);box-shadow:0 0 34px rgba(57,255,106,.09)}
+.price-card .n{color:var(--g);font-size:.8rem}
+.price-card h3{font-size:1.65rem;line-height:1.02;margin:9px 0 8px}
+.price-card .price{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:3rem;line-height:1;color:var(--g);font-weight:700;letter-spacing:-.04em;margin:12px 0 4px}
+.price-card .duration{color:var(--mut);font-size:.88rem;min-height:2.8em}
+.price-card ul{list-style:none;padding:0;margin:18px 0 22px;display:grid;gap:10px}
+.price-card li{position:relative;padding-left:20px;color:var(--mut);font-size:.92rem}
+.price-card li::before{content:"+";position:absolute;left:0;color:var(--g);font-weight:700}
+.price-card .outcome{border-top:1px solid var(--line);padding-top:14px;margin-top:auto;color:var(--fg);font-size:.9rem}
+.price-card .outcome b{display:block;color:var(--g);font-family:'Barlow Condensed','Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.price-card .btn{margin-top:18px;text-align:center}
+.fullcourt{margin-top:18px;display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;background:linear-gradient(135deg,#101510,#0b0b0b 55%);border:1px solid var(--g);border-radius:8px;padding:clamp(22px,4vw,36px);box-shadow:0 0 42px rgba(57,255,106,.08)}
+.fullcourt .price{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:clamp(3.4rem,7vw,5rem);line-height:.95;color:var(--g);font-weight:700;letter-spacing:-.04em;margin:12px 0 5px}
+.fullcourt h3{font-size:clamp(1.8rem,4vw,2.5rem);line-height:.95;margin:10px 0}
+.fullcourt .sub{color:var(--mut);font-size:.95rem}
+.fullcourt-parts{display:grid;gap:14px}
+.fullcourt-part{border-bottom:1px solid var(--line);padding-bottom:12px}
+.fullcourt-part:last-child{border:0;padding-bottom:0}
+.fullcourt-part b{display:block;color:var(--g);font-family:'Barlow Condensed','Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.05em;font-size:1.05rem}
+.fullcourt-part span{color:var(--mut);font-size:.92rem}
+.travel-note{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(57,255,106,.45);border-radius:4px;padding:7px 10px;color:var(--fg);font-size:.85rem;margin-top:14px}
+.pricing-footnote{color:var(--mut);font-size:.82rem;margin-top:18px}
+@media(max-width:850px){.pricing-grid{grid-template-columns:1fr 1fr}.price-card:last-child{grid-column:1/-1}.fullcourt{grid-template-columns:1fr}}
+@media(max-width:560px){.pricing-grid{grid-template-columns:1fr}.price-card:last-child{grid-column:auto}.price-card .duration{min-height:0}}
+
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<nav><div class="logo mono">VERON<span>.</span>EZE / FILM ROOM</div><div style="display:flex;align-items:center;gap:14px"><a href="#pricing" style="color:var(--fg);text-decoration:none;font-size:.9rem">Pricing</a><a class="btn" href="#book">Book a session</a></div></nav>
+
+<header class="hero">
+  <div class="float-photos" aria-hidden="true">
+  <div class="float-photo" style="--top:8%;--duration:42s;--delay:-8s;--opacity:.22"><img src="3x3 Hungary (Nathan Green)-107 2.JPG" alt=""></div>
+  <div class="float-photo" style="--top:25%;--duration:35s;--delay:-24s;--opacity:.18"><img src="Full Edit - U23 3x3 (Nathan Green)-103.jpg" alt=""></div>
+  <div class="float-photo" style="--top:45%;--duration:46s;--delay:-16s;--opacity:.23"><img src="hfmrtoyv0ftlnbs55pp0.jpeg" alt=""></div>
+  <div class="float-photo" style="--top:62%;--duration:39s;--delay:-31s;--opacity:.17"><img src="zd43kmmwzcdxtjapdnwa.jpeg" alt=""></div>
+  <div class="float-photo" style="--top:75%;--duration:49s;--delay:-5s;--opacity:.20"><img src="IMG_0838.JPG" alt=""></div>
+</div>
+  <div class="herogrid">
+    <div class="tag mono">// Live game-film sessions for basketball players</div>
+    <h1>See the game <em>like a pro</em></h1>
+    <p class="lead">The key to becoming the player you want to be is hidden in the game tape that isn’t watched. In a live, one-to-one Zoom session, I will offer a professional's persepctive and analysis on your gameplay , identify your strengths, uncover areas for improvement and build you a clear plan to take your game forward. It's more than scoring more points a game. It's building the IQ and decision making to excell your career beyond the level you play now. I’m Veron Eze, and from representing Great Britain to playing professionally, I had the privillage of exceptional mentorship from top level coaches and players. Now having built a proffessional career from the guidance i was given I’m bringing that experience to help you understand your game and become a better player.</p>
+    <div class="cta">
+      <a class="btn" href="#book">Book a live session</a>
+      <a class="btn ghost" href="#evidence">Why film works</a>
+    </div>
+    <div class="stats mono">
+      <div><b>60 min</b><span>of your tape, watched together live</span></div>
+      <div><b>Lived it</b><span>feedback from experience</span></div>
+      <div><b>1 plan</b><span>to improve your game</span></div>
+    </div>
+  </div>
+</header>
+
+
+
+<section id="about">
+  <div class="about-layout">
+    <div class="about-copy">
+      <div class="tag mono">// About me</div>
+      <h2>The game has been my classroom.</h2>
+      <p>I’m Veron Eze, a professional basketball player with over 13 years’ experience. I’ve represented Great Britain since 15, earned a US basketball scholarship and become an NSIC Conference Champion with Augustana University. As well as having won League and Playoff Championships in the UK and captained Great Britain’s U23 3x3 team.</p>
+      <p>Film has been central to my development, helping me recognise patterns, sharpen decisions and understand the details that make the difference. Through Film Room, I want to share that experience, helping you see your game differently, identify where you can improve and turn insight into progress.</p>
+    </div>
+   <div class="about-photo">
+  <img src="IMG_4678.JPG" alt="Veron Eze, professional basketball player">
+</div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="tag mono">// How it works</div><h2>Watch together. Leave with a plan.</h2>
+  <div class="grid">
+    <div class="card"><div class="n mono">01</div><h3>Tell me about you</h3><p>Fill out a quick form so I can understand you as a player and your goals. .</p></div>
+    <div class="card"><div class="n mono">02</div><h3>Watch your game with me</h3><p>We jump on a 1-to-1 Zoom call and go through your game together. Following a framework I’ll share what I see and give advice as we go, giving you an opportunity to ask me anything.</p></div>
+    <div class="card"><div class="n mono">03</div><h3>Leave with a plan</h3><p>By the end we’ll have identified areas of improvement and established a plan of action.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="two">
+    <div>
+      <div class="tag mono">// The breakdown</div><h2>Not “good game.” A game plan.</h2>
+      <p class="lead">The first step to reaching your potential is identifiying where to improve. Most players miss this crucial part by finishing a game and leaving their feedback up to their own, their parents or their coache's memory.I look at your game through three lenses, and each plays a key role in your performance</p>
+    </div>
+    <div class="report mono">
+      <div class="row"><span>TECHNICAL · HOW YOU EXECUTE</span><b>01</b></div>
+      <div class="row"><span>TACTICAL · HOW YOU READ THE GAME</span><b>02</b></div>
+      <div class="row"><span>TENDENCIES · WHAT YOU DEFAULT TO</span><b>03</b></div>
+      <div class="row"><span>YOUR PLAN · WHAT TO DO NEXT</span><b>INCLUDED</b></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="demo">
+  <div class="tag mono">// Live demo</div>
+  <h2>See a session in action.</h2>
+
+  <div class="vid">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/g3BgpYFwn34"
+      title="Veron Eze Film Room – Live Demo"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<section id="evidence">
+  <div class="tag mono">// The evidence</div><h2>Why film review works.</h2>
+  <div class="grid">
+    <div class="card" style="grid-column:1/-1"><div class="big mono">Training vs. Game</div><h3>Training shows your capability. Games show your reality.</h3><p>In training, you show what you’re capable of. In games, the pace, pressure and tired legs bring out your habits, and that’s your reality. Your gametape is a clear, fair record of it. Look at it together and we can start bridging the gap between your capability and your game-day reality. That gap is where the player you aspire to be gets built.</p></div>
+    <div class="card"><div class="big mono">59%</div><h3>Even experienced coaches miss 4 in 10 moments</h3><p>Qualified coaches accurately recalled 59.2% of the critical events in a match they watched, and novices managed 42%. If trained eyes miss that much, memory alone can’t be your feedback. Tape fills the gap.</p></div>
+    <div class="card"><div class="big mono">Blind spot</div><h3>Without tape, you’re guessing</h3><p>In the moment you only see a fraction of what happens. Video lets you watch your own movement and decisions at a slower speed, so you can spot habits that feel invisible in real time.</p></div>
+    
+    
+    
+    
+    
+  </div>
+  
+</section>
+
+
+<section id="pricing">
+  <div class="tag mono">// Coaching options</div>
+  <h2>Choose your next step.</h2>
+  <p class="pricing-intro">Every player is different. Whether you want a clearer understanding of your game, a plan to work from, or a complete in-person development experience, choose the level of support that fits your goals.</p>
+
+  <div class="pricing-grid">
+    <article class="price-card">
+      <div class="n mono">01 · THE FILM ROOM</div>
+      <h3>Understand your game.</h3>
+      <div class="price">£60</div>
+      <div class="duration">60-minute 1-to-1 Zoom session</div>
+      <ul>
+        <li>Review your game footage together.</li>
+        <li>Live feedback from a professional player's perspective.</li>
+        <li>Identify weaknesses, bad habits and missed opportunities.</li>
+        <li>Understand what needs to improve.</li>
+      </ul>
+      <div class="outcome"><b>Outcome</b>Understand your game.</div>
+      <a class="btn ghost" href="#book">Book this session</a>
+    </article>
+
+    <article class="price-card">
+      <div class="n mono">02 · ANALYSIS + PERSONAL TRAINING PLAN</div>
+      <h3>Know what to work on.</h3>
+      <div class="price">£80</div>
+      <div class="duration">60-minute 1-to-1 Zoom session + personalised plan</div>
+      <ul>
+        <li>Everything included in The Film Room.</li>
+        <li>A training plan based on the weaknesses identified.</li>
+        <li>Specific drills and exercises.</li>
+        <li>Clear priorities for your individual development.</li>
+      </ul>
+      <div class="outcome"><b>Outcome</b>Know what to improve and how to work on it.</div>
+      <a class="btn ghost" href="#book">Book this package</a>
+    </article>
+
+    <article class="price-card featured">
+      <div class="n mono">03 · ADVANCED DEVELOPMENT</div>
+      <h3>The Complete Player</h3>
+      <div class="price">£150</div>
+      <div class="duration">90-minute 1-to-1 Zoom session + personalised development plan</div>
+      <ul>
+        <li>Everything included in Services 1 and 2.</li>
+        <li>Guidance on training frequency and weekly structure.</li>
+        <li>Balance individual workouts, team training, games and recovery.</li>
+        <li>Build sustainable training habits.</li>
+        <li>A personalised weekly development routine.</li>
+      </ul>
+      <div class="outcome"><b>Outcome</b>A complete structure for developing as a player.</div>
+      <a class="btn" href="#book">Choose Complete Player</a>
+    </article>
+  </div>
+
+  <div class="fullcourt">
+    <div>
+      <div class="tag mono">// Premium in-person experience · 04</div>
+      <h3>The Full Court Experience</h3>
+      <p class="sub">Four hours of exclusive, in-person player development with Veron Eze.</p>
+      <div class="price">£400</div>
+      <div class="sub">One-to-one experience · Plus travel</div>
+      <div class="travel-note">Travel costs are additional and agreed with you before booking</div>
+      <p style="margin-top:22px"><a class="btn" href="#book">Enquire about Full Court</a></p>
+    </div>
+    <div class="fullcourt-parts">
+      <div class="fullcourt-part">
+        <b>Part 1 — Game Film Review · 90 minutes</b>
+        <span>Break down your footage together and identify technical, tactical and decision-making weaknesses, with direct feedback and professional insight.</span>
+      </div>
+      <div class="fullcourt-part">
+        <b>Part 2 — On-Court Training · 90 minutes</b>
+        <span>Take the areas identified in the footage onto the court. Work through specific drills, receive real-time corrections and practise applying the feedback in basketball situations.</span>
+      </div>
+      <div class="fullcourt-part">
+        <b>Part 3 — Player Development Discussion · 60 minutes</b>
+        <span>Review your work, discuss how to keep improving, establish training priorities and build a clear direction for your future development.</span>
+      </div>
+      <div class="outcome"><b>Outcome</b>Understand your weaknesses, work on them directly with a professional player and leave with a clear development direction.</div>
+    </div>
+  </div>
+  <p class="pricing-footnote">All online sessions are delivered 1-to-1 over Zoom. The Full Court Experience is £400, with travel costs charged separately and agreed before booking.</p>
+</section>
+
+<section>
+  <div class="card" id="book"><div class="tag mono">// Book</div><h3>Ready to level up?</h3><p>Fill out the quick form with your details and goals and I'll set up a time.</p><p style="margin-top:18px"><!-- BOOKING LINK: swap this mailto for your Google Form / Tally form URL -->
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSe7IG5h10Cz1GQr8abbHugn-15qcpNlFgSYyUhWwZqChtqohQ/viewform" class="btn" target="_blank" rel="noopener noreferrer">Fill out the form</a>
+  </div>
+</section>
+
+<footer class="mono">© 2026 Veron Eze · <a href="https://www.instagram.com/Vc.ezey">Instagram @Vc.ezey</a> · <a href="https://veroneze.co.uk">veroneze.co.uk</a></footer>
+</body>
+</html>

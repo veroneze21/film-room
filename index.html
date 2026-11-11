@@ -234,6 +234,9 @@ footer a{color:var(--g)}
 .price-card li::before{content:"+";position:absolute;left:0;color:var(--g);font-weight:700}
 .price-card .outcome{border-top:1px solid var(--line);padding-top:14px;margin-top:auto;color:var(--fg);font-size:.9rem}
 .price-card .outcome b{display:block;color:var(--g);font-family:'Barlow Condensed','Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.fullcourt .outcome b{
+  color:var(--g);
+}
 .price-card .btn{margin-top:18px;text-align:center}
 .fullcourt{margin-top:18px;display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;background:linear-gradient(135deg,#101510,#0b0b0b 55%);border:1px solid var(--g);border-radius:8px;padding:clamp(22px,4vw,36px);box-shadow:0 0 42px rgba(57,255,106,.08)}
 .fullcourt .price{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:clamp(3.4rem,7vw,5rem);line-height:.95;color:var(--g);font-weight:700;letter-spacing:-.04em;margin:12px 0 5px}
@@ -248,7 +251,31 @@ footer a{color:var(--g)}
 .pricing-footnote{color:var(--mut);font-size:.82rem;margin-top:18px}
 @media(max-width:850px){.pricing-grid{grid-template-columns:1fr 1fr}.price-card:last-child{grid-column:1/-1}.fullcourt{grid-template-columns:1fr}}
 @media(max-width:560px){.pricing-grid{grid-template-columns:1fr}.price-card:last-child{grid-column:auto}.price-card .duration{min-height:0}}
+/* Booking section */
+#book{
+  text-align:center;
+  padding:40px 30px;
+}
 
+#book .tag{
+  text-align:center;
+}
+
+#book h3{
+  font-size:2.2rem;
+  margin:12px 0;
+}
+
+#book p{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+#book .btn{
+  font-size:1.4rem;
+  padding:20px 42px;
+  min-width:240px;
+}
 </style>
 </head>
 <body>
@@ -378,11 +405,10 @@ footer a{color:var(--g)}
       <div class="n mono">02 · ANALYSIS + PERSONAL TRAINING PLAN</div>
       <h3>Know what to work on.</h3>
       <div class="price">£80</div>
-      <div class="duration">60-minute 1-to-1 Zoom session + personalised plan</div>
+      <div class="duration">60-minute 1-to-1 Zoom session + Training drills</div>
       <ul>
-        <li>Everything included in The Film Room.</li>
-        <li>A training plan based on the weaknesses identified.</li>
-        <li>Specific drills and exercises.</li>
+        <li>Everything included in the previous Tier</li>
+        <li>Specific drills based on the weaknesses identified.</li>
         <li>Clear priorities for your individual development.</li>
       </ul>
       <div class="outcome"><b>Outcome</b>Know what to improve and how to work on it.</div>
@@ -395,11 +421,10 @@ footer a{color:var(--g)}
       <div class="price">£150</div>
       <div class="duration">90-minute 1-to-1 Zoom session + personalised development plan</div>
       <ul>
-        <li>Everything included in Services 1 and 2.</li>
-        <li>Guidance on training frequency and weekly structure.</li>
-        <li>Balance individual workouts, team training, games and recovery.</li>
-        <li>Build sustainable training habits.</li>
-        <li>A personalised weekly development routine.</li>
+        <li>Everything included in the previous Tiers</li>
+        <li>A full personalised weekly training plan</li>
+        <li>Nutrition + Strength & Conditioning advice</li>
+        <li>A follow up progress check call</li>
       </ul>
       <div class="outcome"><b>Outcome</b>A complete structure for developing as a player.</div>
       <a class="btn" href="#book">Choose Complete Player</a>
@@ -413,7 +438,6 @@ footer a{color:var(--g)}
       <p class="sub">Four hours of exclusive, in-person player development with Veron Eze.</p>
       <div class="price">£400</div>
       <div class="sub">One-to-one experience · Plus travel</div>
-      <div class="travel-note">Travel costs are additional and agreed with you before booking</div>
       <p style="margin-top:22px"><a class="btn" href="#book">Enquire about Full Court</a></p>
     </div>
     <div class="fullcourt-parts">

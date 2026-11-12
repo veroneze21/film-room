@@ -286,6 +286,47 @@ footer a{color:var(--g)}
     pointer-events:none;transition:transform .35s ease}
   .btn.mobile-cta.show{transform:none;pointer-events:auto}
 }
+  /* Booking choices */
+#book .booking-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+#book .booking-actions .btn {
+  min-width: 230px;
+  text-align: center;
+}
+
+#book .booking-or {
+  color: var(--mut);
+  font-size: 1rem;
+}
+
+#book .booking-note {
+  color: var(--mut);
+  font-size: .85rem;
+  margin-top: 22px;
+}
+
+@media(max-width:700px) {
+  #book .booking-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #book .booking-actions .btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  #book .booking-or {
+    padding: 2px 0;
+  }
+}
 </style>
 </head>
 
@@ -518,16 +559,37 @@ footer a{color:var(--g)}
   <p class="pricing-footnote">All online sessions are delivered 1-to-1 over Zoom. The Full Court Experience is £700, with travel costs charged separately and agreed before booking.</p>
 </section>
 
+
 <section style="padding-top:20px">
   <div class="card" id="book">
     <div class="tag mono">// Book</div>
     <h3>Ready to level up?</h3>
-    <p>Fill out the quick form with your details and goals, and I'll arrange an introductory call.</p>
-    <p style="margin-top:18px">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScefNkcLhshDEVaEwnwA8kXphhE2344jp1B2Atz-vaVSqp1mg/viewform?usp=dialog" class="btn" target="_blank" rel="noopener noreferrer">Fill out the form</a>
-    </p>
+    <p>Choose how you'd like to get started. Tell me about your game or schedule a call directly.</p>
+
+    <div class="booking-actions">
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLScefNkcLhshDEVaEwnwA8kXphhE2344jp1B2Atz-vaVSqp1mg/viewform?usp=dialog"
+        class="btn"
+        target="_blank"
+        rel="noopener noreferrer">
+        Fill out the form
+      </a>
+
+      <span class="booking-or mono">OR</span>
+
+      <a
+        href="https://calendly.com/veron-eze/introductory-call-with-veron"
+        class="btn ghost"
+        target="_blank"
+        rel="noopener noreferrer">
+        Schedule a call
+      </a>
+    </div>
+
+    <p class="booking-note">Choose a convenient time for a short introductory call. Availability is limited to the next three days.</p>
   </div>
 </section>
+
 
 <footer class="mono">© 2026 Veron Eze · <a href="https://www.instagram.com/Vc.ezey">Instagram @Vc.ezey</a> · <a href="https://veroneze.co.uk">veroneze.co.uk</a></footer>
 

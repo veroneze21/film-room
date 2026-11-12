@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:ital,wght@0,600;0,700;1,800&display=swap">
+
 <style>
 /* Film Room by Veron Eze - styles */
 :root{--bg:#050505;--panel:#0f0f0f;--line:#232323;--fg:#f5f5f5;--mut:#9a9a9a;--g:#39ff6a;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -22,10 +23,7 @@ html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:'Barlow',system-ui,sans-serif;line-height:1.55;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;background-attachment:fixed}
 body::after{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(5,5,5,.2),var(--bg) 75%);pointer-events:none;z-index:-1}
 
-
 /* Floating, feather-edged basketball photos behind the page */
-
-/* Floating, feather-edged basketball photos — confined to the hero */
 .float-photos{
   position:absolute;
   top:0;
@@ -52,7 +50,6 @@ body::after{content:"";position:fixed;inset:0;background:radial-gradient(ellipse
   animation:photo-drift var(--duration,38s) linear var(--delay,0s) infinite;
   will-change:transform;
 }
-
 .float-photo img{
   width:100%;
   height:100%;
@@ -60,32 +57,27 @@ body::after{content:"";position:fixed;inset:0;background:radial-gradient(ellipse
   display:block;
   filter:grayscale(1) contrast(1.08);
 }
-
 @keyframes photo-drift{
   from{transform:translate3d(calc(100vw + 200px),0,0)}
   to{transform:translate3d(-350px,0,0)}
 }
-
 .hero{
   position:relative;
   overflow:visible;
   isolation:isolate;
 }
-
 @media(max-width:700px){
   .float-photo{
     width:clamp(90px,25vw,125px);
     opacity:.16;
   }
 }
-
 @media(prefers-reduced-motion:reduce){
   .float-photo{
     animation:none;
     display:none;
   }
 }
-
 
 /* Subtle green ball that travels across the page as the visitor scrolls */
 .scroll-ball{
@@ -164,12 +156,10 @@ h2{font-size:clamp(2.2rem,6vw,3.8rem);letter-spacing:-.005em;margin:10px 0 36px;
 .reel{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
 footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mut);font-size:.85rem}
 footer a{color:var(--g)}
-/* ---- Image / video helpers (used when you replace the placeholders) ---- */
 .bgp img{width:100%;height:100%;object-fit:cover;opacity:.35;filter:grayscale(1) contrast(1.1)}
 .ph img,.vid video,.vid iframe{width:100%;height:100%;object-fit:cover;border:0;border-radius:8px;display:block}
 .vid iframe{position:absolute;inset:0}
 .card .ph{padding:0;overflow:hidden}
-
 
 .about-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center}
 .about-copy p{color:var(--mut);font-size:1.02rem;max-width:62ch}
@@ -193,34 +183,18 @@ footer a{color:var(--g)}
   .about-photo{height:300px;max-width:300px}
 }
 
-  
 /* Mobile typography adjustments only */
 @media(max-width:700px){
-
-  /* Main opening section */
   .herogrid h1{
     font-size:clamp(3.5rem,12vw,4.4rem);
     line-height:.88;
   }
-
-  .herogrid .lead{
-    font-size:1rem;
-  }
-
-  /* About section */
-  .about-copy h2{
-    font-size:2.6rem;
-    line-height:.92;
-  }
-
-  .about-copy p{
-    font-size:.95rem;
-  }
-
+  .herogrid .lead{font-size:1rem}
+  .about-copy h2{font-size:2.6rem;line-height:.92}
+  .about-copy p{font-size:.95rem}
 }
 
-
-/* ---- Pricing and player development packages ---- */
+/* Pricing and player development packages */
 .pricing-intro{max-width:62ch;color:var(--mut);margin:-18px 0 28px}
 .pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
 .price-card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px;min-width:0}
@@ -253,46 +227,21 @@ footer a{color:var(--g)}
 .fullcourt-part b{display:block;color:var(--g);font-family:'Barlow Condensed','Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.05em;font-size:1.05rem}
 .fullcourt-part span{color:var(--mut);font-size:.92rem}
 .travel-note{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(57,255,106,.45);border-radius:4px;padding:7px 10px;color:var(--fg);font-size:.85rem;margin-top:14px}
-.pricing-footnote{
-  color:var(--mut);
-  font-size:.82rem;
-  margin-top:18px;
-  text-align:center;
-}
+.pricing-footnote{color:var(--mut);font-size:.82rem;margin-top:18px;text-align:center}
 @media(max-width:850px){.pricing-grid{grid-template-columns:1fr 1fr}.price-card:last-child{grid-column:1/-1}.fullcourt{grid-template-columns:1fr}}
 @media(max-width:560px){.pricing-grid{grid-template-columns:1fr}.price-card:last-child{grid-column:auto}.price-card .duration{min-height:0}}
+
 /* Booking section */
-#book{
-  text-align:center;
-  padding:20px 30px;
-  margin-top:-35px;
-}
+#book{text-align:center;padding:20px 30px;margin-top:-35px}
+#book .tag{text-align:center}
+#book h3{font-size:2.2rem;margin:12px 0}
+#book p{margin-left:auto;margin-right:auto}
+#book .btn{font-size:1.4rem;padding:20px 42px;min-width:240px}
 
-#book .tag{
-  text-align:center;
-}
-
-#book h3{
-  font-size:2.2rem;
-  margin:12px 0;
-}
-
-#book p{
-  margin-left:auto;
-  margin-right:auto;
-}
-
-#book .btn{
-  font-size:1.4rem;
-  padding:20px 42px;
-  min-width:240px;
-}
-  /* ===== Mobile-only improvements (desktop untouched) ===== */
 .lead-short{display:none}
 .btn.mobile-cta{display:none}
 
 @media(max-width:700px){
-  /* Hero: short hook instead of long paragraph */
   .lead-long{display:none}
   .lead-short{display:block}
   .hero{padding:28px 0 40px}
@@ -301,31 +250,21 @@ footer a{color:var(--g)}
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:30px;padding-top:18px}
   .stats b{font-size:1.1rem}
   .stats span{display:block;font-size:.68rem;line-height:1.25}
-
-  /* Nav */
   nav{padding:14px 0}
   .logo{font-size:.8rem}
   nav .btn{padding:9px 14px;font-size:.9rem}
-
-  /* Tighter rhythm */
   section{padding:44px 0}
   h2{margin:8px 0 22px}
   #book{margin-top:0;padding:28px 22px}
   #book .btn{display:block;min-width:0;width:100%;padding:18px 20px}
   footer{padding-bottom:90px}
-
-  /* About: photo first, wider crop */
   .about-photo{order:-1;max-width:none;height:250px}
   .about-photo img{object-position:70% 20%}
-
-  /* How it works: vertical timeline instead of 3 boxes */
   #how .grid{display:block;margin-left:4px;padding-left:24px;border-left:1px solid var(--line)}
   #how .card{position:relative;background:none;border:0;padding:0 0 26px}
   #how .card:last-child{padding-bottom:0}
   #how .card:hover{transform:none}
   #how .card::before{content:"";position:absolute;left:-29px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--g);box-shadow:0 0 12px var(--g)}
-
-  /* Pricing + evidence: swipeable rows that bleed to the screen edge */
   .pricing-grid,#evidence .grid{
     display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
     margin:0 -22px;padding:4px 22px 14px;scroll-padding:0 22px;
@@ -335,18 +274,12 @@ footer a{color:var(--g)}
   .price-card .duration{min-height:0}
   .pricing-intro::after{content:" Swipe to compare →";color:var(--g)}
   .fullcourt{padding:22px;gap:20px}
-
-  /* Scroll progress bar */
   html::before{content:"";position:fixed;top:0;left:0;width:100%;height:3px;background:var(--g);
     transform:scaleX(0);transform-origin:0 50%;z-index:50;
     animation:prog linear both;animation-timeline:scroll(root block)}
   @keyframes prog{to{transform:scaleX(1)}}
-
-  /* Fade-up on scroll (class added by JS, mobile only) */
   .rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
   .rv.in{opacity:1;transform:none}
-
-  /* Sticky booking button */
   .btn.mobile-cta{display:block;position:fixed;left:12px;right:12px;
     bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:60;text-align:center;
     box-shadow:0 8px 30px rgba(0,0,0,.6);transform:translateY(160%);
@@ -355,65 +288,89 @@ footer a{color:var(--g)}
 }
 </style>
 </head>
-<body>
 
+<body>
 <div class="wrap">
-<nav><div class="logo mono">VERON<span>.</span>EZE / FILM ROOM</div><div style="display:flex;align-items:center;gap:14px"><a class="btn" href="#book">Book a session</a></div></nav>
+
+<nav>
+  <div class="logo mono">VERON<span>.</span>EZE / FILM ROOM</div>
+  <div style="display:flex;align-items:center;gap:14px">
+    <a class="btn" href="#book">Book a session</a>
+  </div>
+</nav>
+
 <header class="hero">
   <div class="float-photos" aria-hidden="true">
-  <div class="float-photo" style="--top:8%;--duration:42s;--delay:-8s;--opacity:.22"><img src="3x3 Hungary (Nathan Green)-107 2.JPG" alt=""></div>
-  <div class="float-photo" style="--top:25%;--duration:35s;--delay:-24s;--opacity:.18"><img src="Full Edit - U23 3x3 (Nathan Green)-103.jpg" alt=""></div>
-  <div class="float-photo" style="--top:45%;--duration:46s;--delay:-16s;--opacity:.23"><img src="hfmrtoyv0ftlnbs55pp0.jpeg" alt=""></div>
-  <div class="float-photo" style="--top:62%;--duration:39s;--delay:-31s;--opacity:.17"><img src="zd43kmmwzcdxtjapdnwa.jpeg" alt=""></div>
-  <div class="float-photo" style="--top:75%;--duration:49s;--delay:-5s;--opacity:.20"><img src="IMG_0838.JPG" alt=""></div>
-</div>
+    <div class="float-photo" style="--top:8%;--duration:42s;--delay:-8s;--opacity:.22"><img src="3x3 Hungary (Nathan Green)-107 2.JPG" alt=""></div>
+    <div class="float-photo" style="--top:25%;--duration:35s;--delay:-24s;--opacity:.18"><img src="Full Edit - U23 3x3 (Nathan Green)-103.jpg" alt=""></div>
+    <div class="float-photo" style="--top:45%;--duration:46s;--delay:-16s;--opacity:.23"><img src="hfmrtoyv0ftlnbs55pp0.jpeg" alt=""></div>
+    <div class="float-photo" style="--top:62%;--duration:39s;--delay:-31s;--opacity:.17"><img src="zd43kmmwzcdxtjapdnwa.jpeg" alt=""></div>
+    <div class="float-photo" style="--top:75%;--duration:49s;--delay:-5s;--opacity:.20"><img src="IMG_0838.JPG" alt=""></div>
+  </div>
+
   <div class="herogrid">
     <div class="tag mono">// Live game-film sessions for basketball players</div>
     <h1>See the game <em>like a pro</em></h1>
-    <p class="lead lead-long">The key to becoming the player you want to be is hidden in the game tape that isn’t watched. In a live, one-to-one Zoom session, I will offer a professional's persepctive and analysis on your gameplay , identify your strengths, uncover areas for improvement and build you a clear plan to take your game forward. It's more than scoring more points a game. It's building the IQ and decision making to excell your career beyond the level you play now. I’m Veron Eze, and from representing Great Britain to playing professionally, I had the privillage of exceptional mentorship from top level coaches and players. Now having built a proffessional career from the guidance i was given I’m bringing that experience to help you understand your game and become a better player.</p>
-   <p class="lead lead-short">The key to becoming the player you want to be is hidden in the game tape that isn’t watched. In a live, one-to-one Zoom session, I will offer a professional's persepctive and analysis on your gameplay , identify your strengths, uncover areas for improvement and build you a clear plan to take your game forward. It's more than scoring more points a game. It's building the IQ and decision making to excell your career beyond the level you play now.</p>
+
+    <p class="lead lead-long">The key to becoming the player you want to be is hidden in the game tape that isn't watched. In a live, one-to-one Zoom session, I'll offer a professional's perspective and analysis of your gameplay, identifying your strengths, uncovering areas for improvement and building a clear plan to take your game forward. It's about more than scoring more points per game. It's about developing the basketball IQ and decision-making skills to take your career beyond the level you're playing at now. I'm Veron Eze. From representing Great Britain to playing professionally, I've had the privilege of receiving exceptional mentorship from top-level coaches and players. Having built my professional career with the guidance I was given, I'm now bringing that experience to help you understand your game and become a better player.</p>
+
+    <p class="lead lead-short">The key to becoming the player you want to be is hidden in the game tape that isn't watched. In a live, one-to-one Zoom session, I'll offer a professional's perspective and analysis of your gameplay, identifying your strengths, uncovering areas for improvement and building a clear plan to take your game forward. It's about more than scoring more points per game. It's about developing the basketball IQ and decision-making skills to take your career beyond the level you're playing at now.</p>
+
     <div class="cta">
       <a class="btn" href="#book">Book a live session</a>
       <a class="btn ghost" href="#evidence">Why film works</a>
     </div>
+
     <div class="stats mono">
-      <div><b>Impact</b><span>find the opportunities missed every game</span></div>
-      <div><b>Lived it</b><span>feedback from experience</span></div>
-      <div><b>1 plan</b><span>to improve your game</span></div>
+      <div><b>Impact</b><span>Find the opportunities missed every game</span></div>
+      <div><b>Lived it</b><span>Feedback from experience</span></div>
+      <div><b>1 plan</b><span>To improve your game</span></div>
     </div>
   </div>
 </header>
-
-
 
 <section id="about">
   <div class="about-layout">
     <div class="about-copy">
       <div class="tag mono">// About me</div>
       <h2>The game has been my classroom.</h2>
-      <p>I’m Veron Eze, a professional basketball player with over 13 years’ experience. I’ve represented Great Britain since 15, earned a US basketball scholarship and become an NSIC Conference Champion with Augustana University. As well as having won League and Playoff Championships in the UK and captained Great Britain’s U23 3x3 team.</p>
+      <p>I'm Veron Eze, a professional basketball player with over 13 years of experience. I've represented Great Britain since the age of 15, earned a US basketball scholarship and become an NSIC Conference Champion with Augustana University. I've also won league and playoff championships in the UK and captained Great Britain's U23 3x3 team.</p>
       <p>Film has been central to my development, helping me recognise patterns, sharpen decisions and understand the details that make the difference. Through Film Room, I want to share that experience, helping you see your game differently, identify where you can improve and turn insight into progress.</p>
     </div>
-   <div class="about-photo">
-  <img src="IMG_4678.JPG" alt="Veron Eze, professional basketball player">
-</div>
+    <div class="about-photo">
+      <img src="IMG_4678.JPG" alt="Veron Eze, professional basketball player">
+    </div>
   </div>
 </section>
 
 <section id="how">
-  <div class="tag mono">// How it works</div><h2>Watch together. Leave with a plan.</h2>
+  <div class="tag mono">// How it works</div>
+  <h2>Watch together. Leave with a plan.</h2>
   <div class="grid">
-    <div class="card"><div class="n mono">01</div><h3>Tell me about you</h3><p>Fill out a quick form so I can understand you as a player and your goals. .</p></div>
-    <div class="card"><div class="n mono">02</div><h3>Watch your game with me</h3><p>We jump on a 1-to-1 Zoom call and go through your game together. Following a framework I’ll share what I see and give advice as we go, giving you an opportunity to ask me anything.</p></div>
-    <div class="card"><div class="n mono">03</div><h3>Leave with a plan</h3><p>By the end we’ll have identified areas of improvement and established a plan of action.</p></div>
+    <div class="card">
+      <div class="n mono">01</div>
+      <h3>Tell me about you</h3>
+      <p>Fill out a quick form so I can understand you as a player and learn about your goals.</p>
+    </div>
+    <div class="card">
+      <div class="n mono">02</div>
+      <h3>Watch your game with me</h3>
+      <p>We jump on a 1-to-1 Zoom call and go through your game together. Following a framework, I'll share what I see and offer advice as we go, giving you the opportunity to ask me anything.</p>
+    </div>
+    <div class="card">
+      <div class="n mono">03</div>
+      <h3>Leave with a plan</h3>
+      <p>By the end, we'll have identified areas for improvement and established a plan of action.</p>
+    </div>
   </div>
 </section>
 
 <section>
   <div class="two">
     <div>
-      <div class="tag mono">// The breakdown</div><h2>Not “good game.” A game plan.</h2>
-      <p class="lead">The first step to reaching your potential is identifiying where to improve. Most players miss this crucial part by finishing a game and leaving their feedback up to their own, their parents or their coache's memory.I look at your game through three lenses, and each plays a key role in your performance</p>
+      <div class="tag mono">// The breakdown</div>
+      <h2>Not “good game.” A game plan.</h2>
+      <p class="lead">The first step to reaching your potential is identifying where you need to improve. Most players miss this crucial step by finishing a game and leaving their feedback to their own memory, their parents or their coach's recollection. I look at your game through three lenses, each of which plays a key role in your performance.</p>
     </div>
     <div class="report mono">
       <div class="row"><span>TECHNICAL · HOW YOU EXECUTE</span><b>01</b></div>
@@ -424,11 +381,9 @@ footer a{color:var(--g)}
   </div>
 </section>
 
-
 <section id="demo">
   <div class="tag mono">// Live demo</div>
   <h2>See a session in action.</h2>
-
   <div class="vid">
     <iframe
       src="https://www.youtube-nocookie.com/embed/g3BgpYFwn34"
@@ -442,20 +397,26 @@ footer a{color:var(--g)}
 </section>
 
 <section id="evidence">
-  <div class="tag mono">// The evidence</div><h2>Why film review works.</h2>
+  <div class="tag mono">// The evidence</div>
+  <h2>Why film review works.</h2>
   <div class="grid">
-    <div class="card" style="grid-column:1/-1"><div class="big mono">Training vs. Game</div><h3>Training shows your capability. Games show your reality.</h3><p>In training, you show what you’re capable of. In games, the pace, pressure and tired legs bring out your habits, and that’s your reality. Your gametape is a clear, fair record of it. Look at it together and we can start bridging the gap between your capability and your game-day reality. That gap is where the player you aspire to be gets built.</p></div>
-    <div class="card"><div class="big mono">59%</div><h3>Even experienced coaches miss 4 in 10 moments</h3><p>Qualified coaches accurately recalled 59.2% of the critical events in a match they watched, and novices managed 42%. If trained eyes miss that much, memory alone can’t be your feedback. Tape fills the gap.</p></div>
-    <div class="card"><div class="big mono">Blind spot</div><h3>Without tape, you’re guessing</h3><p>In the moment you only see a fraction of what happens. Video lets you watch your own movement and decisions at a slower speed, so you can spot habits that feel invisible in real time.</p></div>
-    
-    
-    
-    
-    
+    <div class="card" style="grid-column:1/-1">
+      <div class="big mono">Training vs. Game</div>
+      <h3>Training shows your capability. Games show your reality.</h3>
+      <p>In training, you show what you're capable of. In games, the pace, pressure and tired legs reveal your habits, and that's your reality. Your game tape is a clear, fair record of it. Look at it together and we can start bridging the gap between your capability and your game-day reality. That gap is where the player you aspire to be gets built.</p>
+    </div>
+    <div class="card">
+      <div class="big mono">59%</div>
+      <h3>Even experienced coaches miss four in ten moments</h3>
+      <p>Qualified coaches accurately recalled 59.2% of the critical events in a match they watched, while novices managed 42%. If trained eyes miss that much, memory alone can't be your feedback. Tape fills the gap.</p>
+    </div>
+    <div class="card">
+      <div class="big mono">Blind spot</div>
+      <h3>Without tape, you're guessing</h3>
+      <p>In the moment, you only see a fraction of what happens. Video lets you watch your own movement and decisions at a slower speed, so you can spot habits that feel invisible in real time.</p>
+    </div>
   </div>
-  
 </section>
-
 
 <section id="pricing">
   <div class="tag mono">// Coaching options</div>
@@ -479,12 +440,12 @@ footer a{color:var(--g)}
     </article>
 
     <article class="price-card">
-      <div class="n mono">02 · ANALYSIS + TRAINING Drills</div>
+      <div class="n mono">02 · ANALYSIS + TRAINING DRILLS</div>
       <h3>Know what to work on.</h3>
       <div class="price">£80</div>
-      <div class="duration">60-minute 1-to-1 Zoom session + Training drills</div>
+      <div class="duration">60-minute 1-to-1 Zoom session + training drills</div>
       <ul>
-        <li>Everything included in the previous Tier</li>
+        <li>Everything included in the previous tier.</li>
         <li>Specific drills based on the weaknesses identified.</li>
         <li>Clear priorities for your individual development.</li>
       </ul>
@@ -498,10 +459,10 @@ footer a{color:var(--g)}
       <div class="price">£150</div>
       <div class="duration">90-minute 1-to-1 Zoom session + personalised development plan</div>
       <ul>
-        <li>Everything included in the previous Tiers</li>
-        <li>A full personalised weekly training plan</li>
-        <li>Nutrition + Strength & Conditioning advice</li>
-        <li>A follow up progress check call</li>
+        <li>Everything included in the previous tiers.</li>
+        <li>A full personalised weekly training plan.</li>
+        <li>Nutrition, strength and conditioning advice.</li>
+        <li>A follow-up progress check call.</li>
       </ul>
       <div class="outcome"><b>Outcome</b>A complete structure for developing as a player.</div>
       <a class="btn" href="#book">Choose Complete Player</a>
@@ -513,11 +474,11 @@ footer a{color:var(--g)}
       <div class="tag mono">// Premium in-person experience · 04</div>
       <h3>The Full Court Experience</h3>
       <p class="sub">Four hours of exclusive, in-person player development with Veron Eze.</p>
-<div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
-  <div class="price">£400</div>
-  <span class="sub">Plus Travel</span>
-</div>
-<div class="sub">One-to-one experience</div>
+      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+        <div class="price">£400</div>
+        <span class="sub">Plus travel</span>
+      </div>
+      <div class="sub">One-to-one experience</div>
       <p style="margin-top:22px"><a class="btn" href="#book">Enquire about Full Court</a></p>
     </div>
     <div class="fullcourt-parts">
@@ -533,19 +494,28 @@ footer a{color:var(--g)}
         <b>Part 3 — Player Development Discussion · 60 minutes</b>
         <span>Review your work, discuss how to keep improving, establish training priorities and build a clear direction for your future development.</span>
       </div>
-      <div class="outcome"><b>Outcome</b>Understand your weaknesses, work on them directly with a professional player and leave with a clear development direction.</div>
+      <div class="outcome">
+        <b>Outcome</b>
+        Understand your weaknesses, work on them directly with a professional player and leave with a clear development direction.
+      </div>
     </div>
   </div>
   <p class="pricing-footnote">All online sessions are delivered 1-to-1 over Zoom. The Full Court Experience is £400, with travel costs charged separately and agreed before booking.</p>
 </section>
 
 <section style="padding-top:20px">
-  <div class="card" id="book"><div class="tag mono">// Book</div><h3>Ready to level up?</h3><p>Fill out the quick form with your details and goals and I'll set up an introduction call</p><p style="margin-top:18px"><!-- BOOKING LINK: swap this mailto for your Google Form / Tally form URL -->
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSe7IG5h10Cz1GQr8abbHugn-15qcpNlFgSYyUhWwZqChtqohQ/viewform" class="btn" target="_blank" rel="noopener noreferrer">Fill out the form</a>
+  <div class="card" id="book">
+    <div class="tag mono">// Book</div>
+    <h3>Ready to level up?</h3>
+    <p>Fill out the quick form with your details and goals, and I'll arrange an introductory call.</p>
+    <p style="margin-top:18px">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7IG5h10Cz1GQr8abbHugn-15qcpNlFgSYyUhWwZqChtqohQ/viewform" class="btn" target="_blank" rel="noopener noreferrer">Fill out the form</a>
+    </p>
   </div>
 </section>
 
 <footer class="mono">© 2026 Veron Eze · <a href="https://www.instagram.com/Vc.ezey">Instagram @Vc.ezey</a> · <a href="https://veroneze.co.uk">veroneze.co.uk</a></footer>
+
 <a class="btn mobile-cta" href="#book">Book a live session</a>
 
 <script>
@@ -563,5 +533,7 @@ footer a{color:var(--g)}
     .forEach(function(el){el.classList.add('rv');io.observe(el)});
 })();
 </script>
+
+</div>
 </body>
 </html>
